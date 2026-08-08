@@ -1,0 +1,17 @@
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 运行时数据（本地订阅清单，不入库）
+data/
+
+# demo 验证脚本（非正式代码）
+demo_*.py
+
+# 虚拟环境
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
