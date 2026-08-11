@@ -1,5 +1,6 @@
-from dataclasses import dataclass
+"""统一anime格式"""
 
+from dataclasses import dataclass
 
 @dataclass
 class Anime:

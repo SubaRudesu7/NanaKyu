@@ -1,7 +1,7 @@
 import json
 import os
 import tempfile
-from datetime import datetime, timezone
+from datetime import datetime
 from pathlib import Path
 
 from .models import Anime
@@ -31,7 +31,7 @@ class Storage:
         if any(a.bangumi_id == anime.bangumi_id for a in animes):
             return False            
         if not anime.added_at:
-            anime.added_at = datetime.now(timezone.utc).isoformat()
+            anime.added_at = datetime.now().isoformat()
         animes.append(anime)
         self.save(animes)
         return True
