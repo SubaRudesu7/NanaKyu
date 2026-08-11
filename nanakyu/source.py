@@ -12,7 +12,7 @@ class DataSource(ABC):
         """按关键词搜索番剧，返回候选列表。"""
 
     @abstractmethod
-    def get_updates(self, anime: Anime, subgroup: str = None) -> list[Episode]:  ##输入anime返回episode
+    def get_updates(self, anime: Anime, subgroup: str = None) -> list[Episode]:
         """检测一部番的更新，返回新集列表（按时间倒序）。"""
 
     @abstractmethod
