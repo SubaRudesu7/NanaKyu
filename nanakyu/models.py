@@ -7,14 +7,12 @@ class Anime:
     bangumi_id: str          # 蜜柑番剧 ID
     title: str               # 番剧标题
     last_update: str = ""    # 上次更新时间（ISO 字符串），空 = 还没查过
-    added_at: str = ""       # 加入清单时间
 
     def to_dict(self) -> dict:
         return {
             "bangumi_id": self.bangumi_id,
             "title": self.title,
             "last_update": self.last_update,
-            "added_at": self.added_at,
         }
 
     @classmethod
@@ -23,7 +21,6 @@ class Anime:
             bangumi_id=str(data.get("bangumi_id", "")),
             title=data.get("title", ""),
             last_update=data.get("last_update", ""),
-            added_at=data.get("added_at", ""),
         )
 
 

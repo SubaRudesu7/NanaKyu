@@ -1,13 +1,14 @@
 import json
 import os
 import tempfile
-from datetime import datetime
 from pathlib import Path
 
 from .models import Anime
 
 
 class Storage:
+    """本地 JSON 存储：记录订阅番的 last_update 跟踪表。"""
+
     def __init__(self, path: Path | str):
         self.path = Path(path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
@@ -24,28 +25,4 @@ class Storage:
         fd, tmp = tempfile.mkstemp(dir=self.path.parent, suffix=".tmp")
         with os.fdopen(fd, "w", encoding="utf-8") as f:
             json.dump(payload, f, ensure_ascii=False, indent=2)
-        os.replace(tmp, self.path)   
-
-    def add(self, anime: Anime) -> bool:
-        animes = self.load()
-        if any(a.bangumi_id == anime.bangumi_id for a in animes):
-            return False            
-        if not anime.added_at:
-            anime.added_at = datetime.now().isoformat()
-        animes.append(anime)
-        self.save(animes)
-        return True
-
-    def remove(self, bangumi_id: str) -> bool:
-        animes = self.load()
-        kept = [a for a in animes if a.bangumi_id != bangumi_id]
-        if len(kept) == len(animes):
-            return False           
-        self.save(kept)
-        return True
-
-    def get(self, bangumi_id: str) -> Anime | None:
-        for a in self.load():
-            if a.bangumi_id == bangumi_id:
-                return a
-        return None
+        os.replace(tmp, self.path)
