@@ -1,8 +1,8 @@
 from datetime import datetime
 
-from .models import Anime, Episode
-from .source import DataSource
-from .storage import Storage
+from ..data.models import Anime, Episode
+from ..data.storage import Storage
+from ..sources.base import DataSource
 
 
 def _to_local(dt_str: str) -> datetime | None:

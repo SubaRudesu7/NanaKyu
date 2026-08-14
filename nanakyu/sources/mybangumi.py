@@ -9,8 +9,8 @@ import requests
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 
-from .models import Anime, Episode
-from .source import DataSource
+from ..data.models import Anime, Episode
+from .base import DataSource
 
 BASE_URL = "https://mikanani.kas.pub"
 

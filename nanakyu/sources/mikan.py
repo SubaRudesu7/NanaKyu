@@ -7,8 +7,8 @@ from xml.etree import ElementTree as ET
 
 import requests
 
-from .models import Anime, Episode
-from .source import DataSource
+from ..data.models import Anime, Episode
+from .base import DataSource
 
 BASE_URL = "https://mikanani.kas.pub"
 
